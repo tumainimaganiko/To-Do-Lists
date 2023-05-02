@@ -1,0 +1,46 @@
+body {
+  margin: 0;
+}
+
+h1 {
+  margin: 0;
+  padding: 0;
+}
+
+.heading {
+  display: flex;
+  justify-content: space-between;
+}
+
+.container {
+  padding: 20px;
+  background-color: white;
+  border: 2px solid gray;
+  margin: 20px;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+ul li {
+  padding: 10px;
+  border: 1px solid #f7f7f7;
+  list-style-type: none;
+  display: flex;
+  justify-content: space-between;
+}
+
+a {
+  text-decoration: none;
+  text-align: center;
+  display: block;
+  color: gray;
+  background-color: #f6f6f6;
+  padding: 10px;
+}
+
+.fa-solid {
+  color: #e5e9f0;
+}
