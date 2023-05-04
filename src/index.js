@@ -12,6 +12,21 @@ const retrieve = () => {
 const localData = retrieve();
 if (!localData) localStorage.setItem("todo", "[]");
 const list = document.getElementById('list');
+
+function add(description, completed, id) {
+  let storeData = retrieve();
+  storeData.push({ description, completed, id });
+  const sortedData = updateList(storeData);
+  save(sortedData);
+}
+
+function remove(id) {
+  const storeData = retrieve();
+  let remaining = storeData.filter((todo) => todo.id !== id);
+  const sortedData = updateList(remaining);
+  save(sortedData);
+  display();
+}
 // Sorting the array first
 myTodo.sort((a, b) => a.index - b.index);
 
