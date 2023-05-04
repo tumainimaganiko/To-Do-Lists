@@ -27,6 +27,29 @@ function remove(id) {
   save(sortedData);
   display();
 }
+
+function updateList(todos) {
+  return todos.map((value, index) => {
+    value.id = index;
+    return value;
+  });
+}
+
+function renderList() {
+  const form = document.getElementById("form");
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const storeData = retrieve()
+    const input = form.text.value;
+    const completed = false;
+    let id = storeData.length;
+
+    add(input, completed, id);
+    display();
+  });
+}
+renderList();
+
 // Sorting the array first
 myTodo.sort((a, b) => a.index - b.index);
 
