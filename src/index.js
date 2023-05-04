@@ -50,14 +50,27 @@ function renderList() {
 }
 renderList();
 
-// Sorting the array first
-myTodo.sort((a, b) => a.index - b.index);
 
-myTodo.forEach((value) => {
-  // Creating list of to-do
-  const li = document.createElement('li');
-  li.innerHTML = `
-        ${value.description}<i class="fa-solid fa-ellipsis-vertical"></i>
+function display() {
+  let storeData = retrieve();
+
+  const list = document.getElementById("list");
+  list.innerHTML = "";
+  storeData.forEach((value, index) => {
+    // Creating list of to-do
+    const li = document.createElement("li");
+    li.innerHTML = `
+    <div>
+        <input type="checkbox">
+        <span>${value.description}</span> 
+    </div>
     `;
-  list.appendChild(li);
-});
+    const removeButton = document.createElement("div");
+    removeButton.innerHTML = `<i class="fa-solid fa-ellipsis-vertical"></i>`;
+    removeButton.addEventListener("click", () => {
+      remove(value.id);
+    });
+    li.appendChild(removeButton);
+    list.appendChild(li);
+  });
+}
