@@ -8,6 +8,9 @@ module.exports = {
   mode: 'development',
   devServer: {
     static: './dist',
+    watchFiles: ['./src/*'],
+    open: true,
+    hot: true,
   },
   plugins: [
     new HtmlWebpackPlugin({

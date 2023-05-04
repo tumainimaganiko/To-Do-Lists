@@ -10,8 +10,8 @@ const retrieve = () => {
 const saveTask = () => {
   localStorage.setItem("todo", JSON.stringify(myTodo));
 };
-const data = retrieve();
-if (!data) localStorage.setItem("todo", "[]");
+const localData = retrieve();
+if (!localData) localStorage.setItem("todo", "[]");
 function add(description, completed, id) {
   // myTodo[myTodo.length] = {description,completed,id};
   // myTodo.push({description,completed,id})
@@ -20,8 +20,8 @@ function add(description, completed, id) {
   // saveTask();
   let storeData = retrieve();
   storeData.push({ description, completed, id });
-  storeData = updateList(storeData);
-  save(storeData);
+  const sortedData = updateList(storeData);
+  save(sortedData);
   // updateList();
 }
 function remove(id) {
@@ -31,9 +31,8 @@ function remove(id) {
   // saveTask();
   const storeData = retrieve();
   let remaining = storeData.filter((todo) => todo.id !== id);
-  remaining = updateList(remaining);
-  save(remaining);
-  renderList();
+  const sortedData = updateList(remaining);
+  save(sortedData);
   display();
   // saveTask()
 }
