@@ -1,35 +1,16 @@
 import './style.css';
+import {add} from './module/add.js';
+import {remove} from './module/add.js';
 
-const save = (data) => {
+export const save = (data) => {
   localStorage.setItem('todo', JSON.stringify(data));
 };
-const retrieve = () => JSON.parse(localStorage.getItem('todo'));
+export const retrieve = () => JSON.parse(localStorage.getItem('todo'));
 
-let display;
 const localData = retrieve();
 if (!localData) localStorage.setItem('todo', '[]');
 
-const updateList = (todos) => todos.map((value, index) => {
-  value.id = index;
-  return value;
-});
-
-const add = (description, completed, id) => {
-  const storeData = retrieve();
-  storeData.push({ description, completed, id });
-  const sortedData = updateList(storeData);
-  save(sortedData);
-};
-
-const remove = (id) => {
-  const storeData = retrieve();
-  const remaining = storeData.filter((todo) => todo.id !== id);
-  const sortedData = updateList(remaining);
-  save(sortedData);
-  display();
-};
-
-display = () => {
+export const display = () => {
   const storeData = retrieve();
 
   const list = document.getElementById('list');
