@@ -61,7 +61,7 @@ display = () => {
   });
 };
 
-const  renderList = () => {
+const renderList = () => {
   const form = document.getElementById('form');
   form.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -74,5 +74,5 @@ const  renderList = () => {
     display();
     form.text.value = '';
   });
-}
+};
 renderList();
