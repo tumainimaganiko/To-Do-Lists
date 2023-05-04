@@ -44,3 +44,17 @@ a {
 .fa-solid {
   color: #e5e9f0;
 }
+
+#text {
+  width: 100%;
+  border: none;
+}
+
+.text {
+  border: none;
+  width: 80%;
+}
+
+input:focus {
+  outline: none;
+}
