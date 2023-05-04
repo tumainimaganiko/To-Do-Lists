@@ -61,10 +61,9 @@ function display() {
     // Creating list of to-do
     const li = document.createElement("li");
     li.innerHTML = `
-    <div>
-        <input type="checkbox">
-        <input class="text" type="text" value="${value.description}"/> 
-    </div>
+    <input type="checkbox">
+    <input class="text" type="text" value="${value.description}"/> 
+    <i class="fa-solid fa-ellipsis-vertical"></i>
     `;
     const removeButton = document.createElement("div");
     removeButton.innerHTML = `<i class="fa-regular fa-trash-can"></i>`;
