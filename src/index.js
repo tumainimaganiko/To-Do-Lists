@@ -1,17 +1,15 @@
 import './style.css';
-import {add} from './module/add.js';
-import {remove} from './module/add.js';
+// import {
+//   add, remove, retrieve, save,
+// } from './module/utils.js';
+import utils from './module/utils.js';
+// import   add, remove, save, retrieve, from './module/utils.js'
 
-export const save = (data) => {
-  localStorage.setItem('todo', JSON.stringify(data));
-};
-export const retrieve = () => JSON.parse(localStorage.getItem('todo'));
-
-const localData = retrieve();
+const localData = utils.retrieve();
 if (!localData) localStorage.setItem('todo', '[]');
 
-export const display = () => {
-  const storeData = retrieve();
+const display = () => {
+  const storeData = utils.retrieve();
 
   const list = document.getElementById('list');
   list.innerHTML = '';
@@ -26,7 +24,8 @@ export const display = () => {
     const removeButton = document.createElement('div');
     removeButton.innerHTML = '<i class="fa-regular fa-trash-can"></i>';
     removeButton.addEventListener('click', () => {
-      remove(value.id);
+      utils.remove(value.id);
+      display();
     });
     li.appendChild(removeButton);
     list.appendChild(li);
@@ -35,9 +34,9 @@ export const display = () => {
   const span = document.querySelectorAll('.text');
   span.forEach((btn, index) => {
     btn.addEventListener('keyup', () => {
-      const test = retrieve();
+      const test = utils.retrieve();
       test[index].description = btn.value;
-      save(test);
+      utils.save(test);
     });
   });
 };
@@ -46,12 +45,12 @@ const renderList = () => {
   const form = document.getElementById('form');
   form.addEventListener('submit', (e) => {
     e.preventDefault();
-    const storeData = retrieve();
+    const storeData = utils.retrieve();
     const input = form.text.value;
     const completed = false;
     const id = storeData.length;
 
-    add(input, completed, id);
+    utils.add(input, completed, id);
     display();
     form.text.value = '';
   });
