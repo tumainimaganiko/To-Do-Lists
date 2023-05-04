@@ -1,20 +1,93 @@
-import './style.css';
+import "./style.css";
 
-const myTodo = [
-  { description: 'Going to the GYM', completed: true, index: 1 },
-  { description: 'Cleaning my Room', completed: false, index: 2 },
-  { description: 'Washing my Car', completed: true, index: 3 },
-  { description: 'Coding for 4 hours', completed: false, index: 4 },
-];
-const list = document.getElementById('list');
-// Sorting the array first
-myTodo.sort((a, b) => a.index - b.index);
+let myTodo = JSON.parse(localStorage.getItem("todo")) || [];
+const save = (data) => {
+  localStorage.setItem("todo", JSON.stringify(data));
+};
+const retrieve = () => {
+  return JSON.parse(localStorage.getItem("todo"));
+};
+const saveTask = () => {
+  localStorage.setItem("todo", JSON.stringify(myTodo));
+};
+const data = retrieve();
+if (!data) localStorage.setItem("todo", "[]");
+function add(description, completed, id) {
+  // myTodo[myTodo.length] = {description,completed,id};
+  // myTodo.push({description,completed,id})
+  // localStorage.setItem('todo',JSON.stringify(myTodo))
+  // console.log(myTodo)
+  // saveTask();
+  let storeData = retrieve();
+  storeData.push({ description, completed, id });
+  storeData = updateList(storeData);
+  save(storeData);
+  // updateList();
+}
+function remove(id) {
+  // let myTodo = JSON.parse(localStorage.getItem('todo')) || [];
+  // myTodo = myTodo.filter((todo) => todo.id !== x);
+  //   updateList();
+  // saveTask();
+  const storeData = retrieve();
+  let remaining = storeData.filter((todo) => todo.id !== id);
+  remaining = updateList(remaining);
+  save(remaining);
+  renderList();
+  display();
+  // saveTask()
+}
 
-myTodo.forEach((value) => {
-  // Creating list of to-do
-  const li = document.createElement('li');
-  li.innerHTML = `
-        ${value.description}<i class="fa-solid fa-ellipsis-vertical"></i>
+function updateList(todos) {
+  return todos.map((value, index) => {
+    value.id = index;
+    return value;
+  });
+}
+
+function renderList() {
+  const form = document.getElementById("form");
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const storeData = retrieve()
+    const input = form.text.value;
+    const completed = false;
+    let id = storeData.length;
+    // let id = myTodo.length;
+
+    add(input, completed, id);
+    // addNewTask(input,id)
+    display();
+    // Sorting the array first
+    // myTodo.sort((a, b) => a.index - b.index);
+  });
+}
+renderList();
+
+function display() {
+  let storeData = retrieve();
+
+  const list = document.getElementById("list");
+  list.innerHTML = "";
+  storeData.forEach((value, index) => {
+    // Creating list of to-do
+    const li = document.createElement("li");
+    li.innerHTML = `
+    <div>
+        <input type="checkbox">
+        <span>${value.description}</span> 
+    </div>
     `;
-  list.appendChild(li);
-});
+    const removeButton = document.createElement("div");
+    removeButton.innerHTML = `<i class="fa-solid fa-ellipsis-vertical"></i>`;
+    removeButton.addEventListener("click", () => {
+      remove(value.id);
+    });
+    li.appendChild(removeButton);
+    list.appendChild(li);
+  });
+}
+
+// localStorage.setItem('testing',JSON.stringify([{number:2,value:5}]))
+// localStorage.setItem('testing',JSON.stringify([{number:10,value:98},{number:2,value:5}]))
+// localStorage.setItem('testing',JSON.stringify([{number:27,value:598},{number:65,value:5},{number:2,value:5}]))
