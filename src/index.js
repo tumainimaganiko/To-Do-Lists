@@ -46,6 +46,7 @@ function renderList() {
 
     add(input, completed, id);
     display();
+    form.text.value = '';
   });
 }
 renderList();
@@ -62,15 +63,24 @@ function display() {
     li.innerHTML = `
     <div>
         <input type="checkbox">
-        <span>${value.description}</span> 
+        <input class="text" type="text" value="${value.description}"/> 
     </div>
     `;
     const removeButton = document.createElement("div");
-    removeButton.innerHTML = `<i class="fa-solid fa-ellipsis-vertical"></i>`;
+    removeButton.innerHTML = `<i class="fa-regular fa-trash-can"></i>`;
     removeButton.addEventListener("click", () => {
       remove(value.id);
     });
     li.appendChild(removeButton);
     list.appendChild(li);
   });
+
+  const span = document.querySelectorAll('.text');
+  span.forEach((btn,index) => {
+    btn.addEventListener('keyup', ()=>{
+      const test = retrieve();
+      test[index].description = btn.value;
+      save(test);
+    })
+  })
 }
