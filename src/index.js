@@ -14,7 +14,7 @@ const display = () => {
     // Creating list of to-do
     const li = document.createElement('li');
     li.innerHTML = `
-    <input class="checkbox" type="checkbox">
+    <input class="checkbox" type="checkbox" ${value.completed ? 'checked' : ''}>
     <input class="text" type="text" value="${value.description}"/> 
     <i class="fa-solid fa-ellipsis-vertical"></i>
     `;
