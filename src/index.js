@@ -1,9 +1,6 @@
 import './style.css';
-// import {
-//   add, remove, retrieve, save,
-// } from './module/utils.js';
-import utils from './module/utils.js';
-// import   add, remove, save, retrieve, from './module/utils.js'
+import utils from './modules/utils.js';
+import { completed, unCompleted } from './modules/status.js';
 
 const localData = utils.retrieve();
 if (!localData) localStorage.setItem('todo', '[]');
@@ -17,7 +14,7 @@ const display = () => {
     // Creating list of to-do
     const li = document.createElement('li');
     li.innerHTML = `
-    <input type="checkbox">
+    <input class="checkbox" type="checkbox" ${value.completed ? 'checked' : ''}>
     <input class="text" type="text" value="${value.description}"/> 
     <i class="fa-solid fa-ellipsis-vertical"></i>
     `;
@@ -39,6 +36,19 @@ const display = () => {
       utils.save(test);
     });
   });
+
+  const checkbox = document.querySelectorAll('.checkbox');
+  checkbox.forEach((btn, index) => {
+    btn.addEventListener('change', () => {
+      const test = utils.retrieve();
+      if (btn.checked === true) {
+        test[index].completed = completed(test);
+      } else {
+        test[index].completed = unCompleted(test);
+      }
+      utils.save(test);
+    });
+  });
 };
 
 const renderList = () => {
@@ -56,3 +66,17 @@ const renderList = () => {
   });
 };
 renderList();
+display();
+const clear = () => {
+  let store = utils.retrieve();
+  store = store.filter((todo) => !todo.completed);
+  const remains = utils.updateList(store);
+  utils.save(remains);
+};
+
+const link = document.querySelector('a');
+link.addEventListener('click', (e) => {
+  e.preventDefault();
+  clear();
+  display();
+});

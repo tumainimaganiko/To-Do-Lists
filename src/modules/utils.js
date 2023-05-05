@@ -25,5 +25,5 @@ function remove(id) {
 }
 
 export default {
-  add, remove, save, retrieve,
+  add, remove, save, retrieve, updateList,
 };
