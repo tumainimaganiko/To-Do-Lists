@@ -4,7 +4,7 @@ const save = (data) => {
 
 const retrieve = () => JSON.parse(localStorage.getItem('todo'));
 
- export function updateList(todos) {
+function updateList(todos) {
   return todos.map((value, index) => {
     value.id = index;
     return value;
@@ -25,5 +25,5 @@ function remove(id) {
 }
 
 export default {
-  add, remove, save, retrieve,updateList
+  add, remove, save, retrieve, updateList,
 };

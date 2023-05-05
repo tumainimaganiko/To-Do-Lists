@@ -1,6 +1,6 @@
 import './style.css';
 import utils from './modules/utils.js';
-import { completed, unCompleted } from './modules/status';
+import { completed, unCompleted } from './modules/status.js';
 
 const localData = utils.retrieve();
 if (!localData) localStorage.setItem('todo', '[]');
@@ -38,17 +38,17 @@ const display = () => {
   });
 
   const checkbox = document.querySelectorAll('.checkbox');
-checkbox.forEach((btn,index) => {
-  btn.addEventListener('change', () => {
+  checkbox.forEach((btn, index) => {
+    btn.addEventListener('change', () => {
       const test = utils.retrieve();
-      if(btn.checked === true){
-      test[index].completed = completed(test);
-    }else {
-      test[index].completed = unCompleted(test);
-    }
-    utils.save(test)
-  })
-})
+      if (btn.checked === true) {
+        test[index].completed = completed(test);
+      } else {
+        test[index].completed = unCompleted(test);
+      }
+      utils.save(test);
+    });
+  });
 };
 
 const renderList = () => {
@@ -57,7 +57,7 @@ const renderList = () => {
     e.preventDefault();
     const storeData = utils.retrieve();
     const input = form.text.value;
-    let completed = false;
+    const completed = false;
     const id = storeData.length;
 
     utils.add(input, completed, id);
@@ -66,17 +66,17 @@ const renderList = () => {
   });
 };
 renderList();
-display()
+display();
 const clear = () => {
   let store = utils.retrieve();
-  store = store.filter((todo) => !todo.completed)
-  const remains = utils.updateList(store)
+  store = store.filter((todo) => !todo.completed);
+  const remains = utils.updateList(store);
   utils.save(remains);
-}
+};
 
 const link = document.querySelector('a');
 link.addEventListener('click', (e) => {
-  e.preventDefault()
+  e.preventDefault();
   clear();
   display();
-})
+});

@@ -1,9 +1,13 @@
-const completed = (task) => {
-    return task.completed = true;
+function completed(task) {
+  task.completed = true;
+  const test = task.completed;
+  return test;
 }
 
-const unCompleted = (task) => {
-    return task.completed = false;
+function unCompleted(task) {
+  task.completed = false;
+  const test = task.completed;
+  return test;
 }
 
-export {completed, unCompleted}
+export { completed, unCompleted };
