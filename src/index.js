@@ -41,7 +41,7 @@ const display = () => {
 checkbox.forEach((btn,index) => {
   btn.addEventListener('change', () => {
       const test = utils.retrieve();
-      if(btn.checked){
+      if(btn.checked === true){
       test[index].completed = completed(test);
     }else {
       test[index].completed = unCompleted(test);
@@ -66,3 +66,17 @@ const renderList = () => {
   });
 };
 renderList();
+display()
+const clear = () => {
+  let store = utils.retrieve();
+  store = store.filter((todo) => !todo.completed)
+  const remains = utils.updateList(store)
+  utils.save(remains);
+}
+
+const link = document.querySelector('a');
+link.addEventListener('click', (e) => {
+  e.preventDefault()
+  clear();
+  display();
+})
