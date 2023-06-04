@@ -65,7 +65,7 @@
 ### Key Features <a name="key-features"></a>
 
 
-- User can add task to the todo.
+- User can add a task to the todo.
 - User can edit saved tasks.
 - User can delete a task.
 - User can mark a task as completed.
@@ -137,8 +137,8 @@ Your app is ready to be deployed!
 
 👤 Tumaini Maganiko
 
-- GitHub: [@githubhandle](https://github.com/tumainimaganiko)
-- Twitter: [@twitterhandle](https://twitter.com/Chief2maini)
+- GitHub: [@tumainimaganiko](https://github.com/tumainimaganiko)
+- Twitter: [@Chief2maini](https://twitter.com/Chief2maini)
 - LinkedIn: [LinkedIn](https://www.linkedin.com/in/tumaini-maganiko-991b30262/)
 
 
