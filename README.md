@@ -22,10 +22,11 @@
   - [💻 Getting Started ](#-getting-started-)
     - [Prerequisites](#prerequisites)
     - [Setup](#setup)
-    - [Install](#install)
     - [Usage](#usage)
+    - [`npm start`](#npm-start)
     - [Run tests](#run-tests)
     - [Deployment](#deployment)
+    - [`npm run build`](#npm-run-build)
   - [👥 Author ](#-author-)
   - [🔭 Future Features ](#-future-features-)
   - [🤝 Contributing ](#-contributing-)
@@ -37,7 +38,7 @@
 
 # 📖  To Do List PROJECT <a name="about-project"></a>
 
->This is my second microverse project I have built it with HTML and CSS.
+
 
 ## 🛠 Built With <a name="built-with"></a>
 1. HTML
@@ -64,10 +65,13 @@
 ### Key Features <a name="key-features"></a>
 
 
-- Added index.html file
-- Added styles.css
-- Added index.js file
-- Used Modular JS
+- User can add task to the todo.
+- User can edit saved tasks.
+- User can delete a task.
+- User can mark a task as completed.
+- User can clear all completed tasks.
+
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -93,33 +97,19 @@ To get a local copy up and running, follow these steps.
 
 ### Setup
 
-Clone this repository to your desired folder:
+To get a local copy up and running follow these simple example steps.
 
 
-Run this command:
-
-```sh
-  cd my-folder
-  git clone https://github.com/tumainimaganiko/Awesome-Book-project
-```
-
-### Install
-
-Install this project with:
-
-
-command:
-
-```sh
-  cd my-project
-  npm install
-```
+- git clone https://github.com/tumainimaganiko/To-Do-Lists
+- cd To-Do-Lists
+- npm install
 
 ### Usage
 
 To run the project, execute the following command:
 
-Open index.html using live server extension.
+### `npm start`
+Open [http://localhost:8080](http://localhost:8080) to view it in your browser.
 
 ### Run tests
 
@@ -127,9 +117,16 @@ Coming soon
 
 ### Deployment
 
-Coming soon
+### `npm run build`
 
+```
+Builds the app for production to the build folder.
 
+It correctly bundles the project in production mode and optimizes the build for the best performance.
+
+The build is minified and the filenames include the hashes.
+Your app is ready to be deployed!
+```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -150,8 +147,9 @@ Coming soon
 <!-- FUTURE FEATURES -->
 
 ## 🔭 Future Features <a name="future-features"></a>
-- Add Interactive list.
--  Add and remove items.
+- Enabling user set a reminder for a certain tasks
+
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- CONTRIBUTING -->
@@ -159,6 +157,11 @@ Coming soon
 ## 🤝 Contributing <a name="contributing"></a>
 
 Contributions, issues, and feature requests are welcome!
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b 'branchname'`)
+3. Commit your Changes (`git commit -m 'Add some branchname'`)
+4. Push to the Branch (`git push origin branchname`)
+5. Open a Pull Request
 
 Feel free to check the [issues page](../../issues/).
 
