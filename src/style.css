@@ -45,9 +45,10 @@ a {
   color: #e5e9f0;
 }
 
-#text {
+form input {
   width: 100%;
   border: none;
+  font-size: 20px;
 }
 
 .text {
@@ -57,4 +58,8 @@ a {
 
 input:focus {
   outline: none;
+}
+
+.container div:nth-child(2) {
+  padding: 15px;
 }
