@@ -5,13 +5,12 @@ import { completed, unCompleted } from './modules/status.js';
 const localData = utils.retrieve();
 if (!localData) localStorage.setItem('todo', '[]');
 
+// Function to Display items
 const display = () => {
   const storeData = utils.retrieve();
-
   const list = document.getElementById('list');
   list.innerHTML = '';
   storeData.forEach((value) => {
-    // Creating list of to-do
     const li = document.createElement('li');
     li.innerHTML = `
     <input class="checkbox" type="checkbox" ${value.completed ? 'checked' : ''}>
@@ -28,6 +27,7 @@ const display = () => {
     list.appendChild(li);
   });
 
+  // Function for Editing Todo tasks
   const span = document.querySelectorAll('.text');
   span.forEach((btn, index) => {
     btn.addEventListener('keyup', () => {
@@ -37,6 +37,7 @@ const display = () => {
     });
   });
 
+  // Making Checkbox to control completed status of tasks
   const checkbox = document.querySelectorAll('.checkbox');
   checkbox.forEach((btn, index) => {
     btn.addEventListener('change', () => {
@@ -51,6 +52,7 @@ const display = () => {
   });
 };
 
+// Capturing form input and sending it to local storage on form submission
 const renderList = () => {
   const form = document.getElementById('form');
   form.addEventListener('submit', (e) => {
@@ -59,14 +61,16 @@ const renderList = () => {
     const input = form.text.value;
     const completed = false;
     const id = storeData.length;
-
     utils.add(input, completed, id);
     display();
     form.text.value = '';
   });
 };
+
 renderList();
 display();
+
+// Clearing completed tasks
 const clear = () => {
   let store = utils.retrieve();
   store = store.filter((todo) => !todo.completed);
